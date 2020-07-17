@@ -1,5 +1,5 @@
-ARG Version="1.5.0"
-ARG AlpineVersion="3.10"
+ARG Version="1.6.0"
+ARG AlpineVersion="3.12"
 
 FROM alpine:$AlpineVersion as builder
 # hadolint ignore=DL3018
@@ -10,7 +10,9 @@ RUN apk add --update --no-cache \
     build-base \
     flex \
     libev-dev \
-    openssl-dev
+    openssl-dev \
+    py3-docutils \
+    ;
 ARG Version
 ENV VERSION="$Version"
 # Tar fails without an error in Docker Hub but succeeds on my laptop. For now
