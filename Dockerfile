@@ -15,13 +15,11 @@ RUN apk add --update --no-cache \
     ;
 ARG Version
 ENV VERSION="$Version"
-# Tar fails without an error in Docker Hub but succeeds on my laptop. For now
-# ignore the error as the build is fine even with it.
-RUN wget "https://github.com/varnish/hitch/archive/${VERSION}.tar.gz" && \
-    tar -vxzf "${VERSION}.tar.gz" || true
-WORKDIR /hitch-${Version}
+ADD "https://github.com/varnish/hitch/archive/${VERSION}.tar.gz" /
 ENV LDFLAGS="--static"
-RUN ./bootstrap && \
+RUN tar -xzf "${VERSION}.tar.gz" && \
+    cd "hitch-${VERSION}" && \
+    ./bootstrap && \
     ./configure && \
     make && \
     make install
