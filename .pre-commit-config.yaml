@@ -18,7 +18,7 @@ repos:
       - id: proselint
         types: [plain-text]
         exclude: LICENSE
-  - repo: https://www.shore.co.il/git/docker-pre-commit
+  - repo: https://git.shore.co.il/nimrod/docker-pre-commit.git
     rev: v0.3.0
     hooks:
       - id: hadolint
