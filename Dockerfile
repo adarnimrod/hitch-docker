@@ -17,7 +17,6 @@ ARG Version
 ENV VERSION="$Version"
 RUN wget "https://github.com/varnish/hitch/archive/${VERSION}.tar.gz" && \
     tar --no-same-owner --no-same-permissions -xzf "${VERSION}.tar.gz"
-ENV LDFLAGS="--static"
 WORKDIR /hitch-$Version
 RUN ./bootstrap && \
     make && \
@@ -26,7 +25,13 @@ RUN make check
 
 FROM alpine:$AlpineVersion
 # hadolint ignore=DL3018
-RUN apk add --update --no-cache ca-certificates tini netcat-openbsd openssl
+RUN apk add --update --no-cache \
+        ca-certificates \
+        libev \
+        netcat-openbsd \
+        openssl \
+        tini \
+        ;
 COPY --from=builder /usr/local/sbin/hitch /usr/local/sbin/
 ARG Version
 ENV VERSION="$Version"
