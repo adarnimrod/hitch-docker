@@ -17,7 +17,7 @@ ARG Version
 ENV VERSION="$Version"
 # hadolint ignore=DL3020
 ADD "https://hitch-tls.org/source/hitch-${VERSION}.tar.gz" /
-RUN tar -xzf "${VERSION}.tar.gz"
+RUN tar -xzf "hitch-${VERSION}.tar.gz"
 WORKDIR /hitch-$Version
 RUN ./bootstrap && \
     make && \
