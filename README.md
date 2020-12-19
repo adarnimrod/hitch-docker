@@ -1,5 +1,7 @@
 # Hitch Docker image
 
+ [![pipeline status](https://git.shore.co.il/nimrod/hitch-docker/badges/master/pipeline.svg)](https://git.shore.co.il/nimrod/hitch-docker/-/commits/master)
+
 ## Usage example
 
 ```

@@ -1,0 +1,17 @@
+---
+stages:
+  - test
+
+pre-commit:
+  stage: test
+  image: adarnimrod/ci-images:pre-commit
+  variables:
+    XDG_CACHE_HOME: "$CI_PROJECT_DIR/.cache"
+    # Disabled until https://github.com/pre-commit/pre-commit/issues/1387 is
+    # resolved.
+    SKIP: "hadolint,docker-compose"
+  script:
+    - pre-commit run --all-files
+  cache:
+    paths:
+      - .cache/
