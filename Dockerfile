@@ -19,7 +19,7 @@ ENV VERSION="$Version"
 ADD "https://hitch-tls.org/source/hitch-${VERSION}.tar.gz" /
 RUN tar -xzf "hitch-${VERSION}.tar.gz"
 WORKDIR /hitch-$Version
-RUN ./bootstrap && \
+RUN ./configure && \
     make && \
     make install && \
     make check
