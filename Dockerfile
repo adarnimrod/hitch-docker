@@ -15,13 +15,14 @@ RUN apk add --update --no-cache \
     ;
 ARG Version
 ENV VERSION="$Version"
-RUN wget "https://github.com/varnish/hitch/archive/${VERSION}.tar.gz" && \
-    tar --no-same-owner --no-same-permissions -xzf "${VERSION}.tar.gz"
+# hadolint ignore=DL3020
+ADD "https://hitch-tls.org/source/hitch-${VERSION}.tar.gz" /
+RUN tar -xzf "${VERSION}.tar.gz"
 WORKDIR /hitch-$Version
 RUN ./bootstrap && \
     make && \
-    make install
-RUN make check
+    make install && \
+    make check
 
 FROM alpine:$AlpineVersion
 # hadolint ignore=DL3018
