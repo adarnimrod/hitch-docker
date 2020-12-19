@@ -11,6 +11,7 @@ RUN apk add --update --no-cache \
     flex \
     libev-dev \
     openssl-dev \
+    py3-docutils \
     ;
 ARG Version
 ENV VERSION="$Version"
@@ -18,10 +19,10 @@ RUN wget "https://github.com/varnish/hitch/archive/${VERSION}.tar.gz" && \
     tar --no-same-owner --no-same-permissions -xzf "${VERSION}.tar.gz"
 ENV LDFLAGS="--static"
 WORKDIR /hitch-$Version
-RUN ./bootstrap --disable-documentation && \
-    make ENABLE_DOCUMENTATION=0 && \
-    make install && \
-    make check
+RUN ./bootstrap && \
+    make && \
+    make install
+RUN make check
 
 FROM alpine:$AlpineVersion
 # hadolint ignore=DL3018
