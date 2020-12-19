@@ -1,4 +1,4 @@
-ARG Version="1.6.0"
+ARG Version="1.7.0"
 ARG AlpineVersion="3.12"
 
 FROM alpine:$AlpineVersion as builder
