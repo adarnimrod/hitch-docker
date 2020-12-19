@@ -22,6 +22,7 @@ WORKDIR /hitch-$Version
 RUN ./bootstrap && \
     make && \
     make install
+RUN make check
 
 FROM alpine:$AlpineVersion
 # hadolint ignore=DL3018
