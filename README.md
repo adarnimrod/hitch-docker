@@ -1,6 +1,7 @@
 # Hitch Docker image
 
 [![pipeline status](https://git.shore.co.il/nimrod/hitch-docker/badges/master/pipeline.svg)](https://git.shore.co.il/nimrod/hitch-docker/-/commits/master)
+[![Docker Hub downloads](https://img.shields.io/docker/pulls/adarnimrod/hitch?logo=docker)](https://hub.docker.com/r/adarnimrod/hitch)
 
 ## Usage example
 
