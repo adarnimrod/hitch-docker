@@ -1,5 +1,5 @@
 ARG Version="1.7.0"
-ARG AlpineVersion="3.12"
+ARG AlpineVersion="3.13"
 
 FROM alpine:$AlpineVersion as builder
 # hadolint ignore=DL3018
